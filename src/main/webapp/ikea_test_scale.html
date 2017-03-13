@@ -1,0 +1,220 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function toggleRegOptions()
+{
+	testType = document.getElementById("testType");
+	if(testType.value=="partialReg")
+	{
+		//alert("je;;p");
+		document.getElementById("partRegOpt1").style.visibility="visible";
+		document.getElementById("partRegOpt2").style.visibility="visible";
+	}else
+	{
+		//alert("zzzz");
+		document.getElementById("partRegOpt1").style.visibility="hidden";
+		document.getElementById("partRegOpt2").style.visibility="hidden";
+	}
+	
+}
+
+function toggleSchedule()
+{
+	schedule = document.getElementById("scheduleChkbox");
+	if(!schedule.checked){
+		document.getElementById("scheduleBtn").style.display="none";
+	}else
+	{
+		document.getElementById("scheduleBtn").style.display="block";
+	}
+}
+
+function comingsoon()
+{
+	alert('Coming soon!');
+}
+
+
+</script>
+</head>
+
+<body onload="toggleRegOptions()">
+<table style="width: 100%;table-layout: fixed;" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+		<td width="50%"><img alt="" src="images/logo.svg" style="width: 100;height: 80;vertical-align: top;padding-left: 50px"></td>
+		<td width="50%"><img alt="" src="images/index.jpg" style="width: 100;height: 80; vertical-align: bottom;padding-right: 50px" align="right""></td>
+	</tr>
+</table>
+
+
+<h3 align="center" style="background-color: blue;font-size:24px;color: yellow; font-family:sans-serif;font-weight:bold; width: 100%">MCTP TEST COMMAND CONSOLE</h3>
+<table style="width: 100%;table-layout: fixed;height:30%;border-style: groove;border-color: blue;" border="1" cellspacing="0">
+
+<tr>
+<td valign="top" width="33%">
+<form action="ConversationServlet" method="get" >
+<table style="width: 100%;" border="0" cellspacing="5" cellpadding="5" >
+<tr>
+<td colspan="2"><h4 style="font-family: sans-serif;font-size: 18">Test Criteria: &nbsp;</h4></td></tr>
+	<tr>
+		<td align="right" style="font-family: sans-serif;font-size: 16">Target Test Env:&nbsp;</td>
+		<td align="left">
+			<select name="env" style="width: 120">
+				<option value="-1" selected="selected">Select One</option>
+				<option value="pte">PTE</option>
+				<option value="pte2">PTE-2</option>
+				<option value="cte">CTE-F</option>
+				<option value="ctef2">CTE-F2</option>
+				<option value="ppe">PPE</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="font-family: sans-serif;font-size: 16">Target Test Country:&nbsp;</td>
+		<td align="left">
+			<select name="ru" style="width: 120">
+				<option value="-1" selected="selected">Select One</option>
+				<option value="gb">England</option>
+				<option value="ie">Ireland</option>
+				<option value="be">Belgium</option>
+				<option value="de">Germany</option>
+				<option value="zz">Master Site</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="font-family: sans-serif;font-size: 16">Language:&nbsp;</td>
+		<td align="left">
+			<select name="lang" style="width: 120">
+				<option value="en" selected="selected">English</option>
+				<option value="">German</option>
+				<option value="">Swedish</option>
+				<option value="">Danish</option>
+				<option value="">French</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="font-family: sans-serif;font-size: 16">Test Pack:&nbsp;</td>
+		<td align="left">
+			<select id="testType" name="testType" style="width: 120" onchange="toggleRegOptions()">
+				<option value="smokeTest">Smoke Test</option>
+				<option value="regression">Full Regression</option>
+				<option value="partialReg">Partial Regression</option>
+			</select>
+		</td>
+	</tr>
+	
+		
+	<tr>
+		<td align="right" style="font-family: sans-serif;font-size: 16">Customer Type:&nbsp;</td>
+		<td align="left">
+			<select name="cusType" style="width: 120">
+				<option value="registered">Registered</option>
+				<option value="guest" selected="selected">Guest</option>
+			</select>
+		</td>
+	</tr>
+	<tr id="scheduleChkbox">
+		<td align="right" width="50%" style="font-family: sans-serif;font-size: 16" valign="bottom">Set schedule:&nbsp;</td>
+		<td align="left" width="50%">
+			&nbsp;<input type="datetime-local" name="scheduleTime" >
+		</td>
+	</tr>
+				<tr id="partRegOpt1" align="center">
+					<td align="right" width="50%" style="font-family: sans-serif;font-size: 16">DDC Flow:&nbsp;</td>
+					<td align="left" width="50%">
+						&nbsp;<input type="checkbox" name="ddcFlow" />
+					</td>
+				</tr>
+				<tr id="partRegOpt2" align="center">
+					<td align="right" width="50%" style="font-family: sans-serif;font-size: 16">CDC Flow:&nbsp;</td>
+					<td align="left" width="50%">
+						&nbsp;<input type="checkbox" name="cdcFlow"/>
+					</td>
+				</tr>					
+	<tr valign="bottom">
+		<td colspan="1" align="center">
+			<input type="submit"  value="Run Now" style="color:white;background-color: blue;width: 180; height: 40;font-size: large;font-family: sans-serif;border: none;" >
+		</td>
+		<td colspan="1" align="center">
+			<input id="scheduleBtn" type="submit" value="Schedule Test" style="color:white;background-color: blue;width: 180; height: 40;font-size: large;font-family: sans-serif;border: none;" >
+		</td>
+	</tr>
+</table>
+
+</form>
+</td>
+<td width="33%" align="center" valign="top"  >
+
+<table width="100%" border="0" cellspacing="5" cellpadding="5" >
+	<tr><td colspan="2" style="font-family: sans-serif;font-size: 18;font-weight: bold;" align="left">&nbsp;Smoke Test Results: &nbsp;Order Creation</td></tr>	
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr>
+		<td width="50%" align="left" style="font-family: sans-serif;font-size: 16">&nbsp;Truck article:</td>
+		<td width="20%" align="center" style="font-family: sans-serif;font-size: 16;font-weight: bold;color: white;background-color: #00cc00;border-radius: 10px;"><a href="test_results.html" style="color: white" >Passed</a></td>
+	</tr>
+	<tr>
+		<td align="left" style="font-family: sans-serif;font-size: 16">&nbsp;Parcel article:</td>
+		<td align="center" style="font-family: sans-serif;font-size: 16;font-weight: bold;color: white;background-color: #00cc00;border-radius: 10px;"><a href="test_results.html" style="color: white" >Passed</a></td>
+	</tr>
+	<tr>
+		<td align="left" style="font-family: sans-serif;font-size: 16">&nbsp;Truck & Parcel article:</td>
+		<td align="center" style="font-family: sans-serif;font-size: 16;font-weight: bold;color: white;background-color: #00cc00;border-radius: 10px;"><a href="test_results.html" style="color: white" >Passed</a></td>
+	</tr>
+	<tr>
+		<td align="left" style="font-family: sans-serif;font-size: 16">&nbsp;Family discounted article:</td>
+		<td align="center" style="font-family: sans-serif;font-size: 16;font-weight: bold;background-color: red;border-radius: 10px;"><a href="test_results.html" style="color: white" >Failed</a></td>
+	</tr>
+	<tr>
+		<td align="left" style="font-family: sans-serif;font-size: 16">&nbsp;Business customer:</td>
+		<td align="center" style="font-family: sans-serif;font-size: 16font-weight: bold;background-color: orange;color:white;border-radius: 10px;">Not run</td>
+	</tr>
+	<tr height="175px" valign="bottom">
+		<td colspan="2" align="center" style="font-family: sans-serif;font-size: 16">
+			<input id="pastResultsBtn" type="button" value="Past Results" style="color:white;background-color: blue;width: 180; height: 40;font-size: large;font-family: sans-serif;border: none;" onclick="comingsoon()" >
+		</td>
+	</tr>
+			
+</table>
+</td>
+<td width="34%" align="center" valign="top">
+
+<table style="width: 100%;" border="0" cellspacing="5" cellpadding="5">
+<tr><td colspan="2"><h4 style="font-family: sans-serif;font-size: 18">Application Health: &nbsp;</h4></td></tr>
+<tr>
+	<td align="right" width="50%"><img src="images/green.jpg" style="width: 20;height: 20;background-color: threedface;"/></td>
+	<td align="left" style="font-family: sans-serif;font-size: 16" width="50%">PTE</td>
+</tr>
+<tr>
+	<td align="right"><img src="images/green.jpg" style="width: 20;height: 20;background-color: threedface;"/></td>
+	<td align="left" style="font-family: sans-serif;font-size: 16">CTE-F</td>
+</tr>
+<tr>
+	<td align="right"><img src="images/red.jpg" style="width: 25;height: 25;background-color: threedface;"/></td>
+	<td align="left" style="font-family: sans-serif;font-size: 16">CTE-F2</td>
+</tr>
+<tr>
+	<td align="right"><img src="images/green.jpg" style="width: 20;height: 20;background-color: threedface;"/></td>
+	<td align="left" style="font-family: sans-serif;font-size: 16">PPE</td>
+</tr>
+<tr>
+	<td align="right"><img src="images/green.jpg" style="width: 20;height: 20;background-color: threedface;"/></td>
+	<td align="left" style="font-family: sans-serif;font-size: 16">PPE2</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+
+</html>
+
+
+<!-- 
+DDC Flow, CDC Flow check boxes for Partial regression option. 
+
+Application health in all target environments 
+
+ -->
